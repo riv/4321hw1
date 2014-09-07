@@ -57,124 +57,124 @@ void TestLL() {
 	ASSERT_EQUAL("1 2 3", list2.toString());
 	ASSERT_EQUAL(3, list2.size());
 
-	// Test out the list.getReverse() function
-	LinkedList *reversed = list.getReverse();
-	ASSERT_NOT_NULL(reversed);
-	ASSERT_EQUAL("3 2 1", reversed->toString());
-	ASSERT_EQUAL(3, reversed->size());
+	//// Test out the list.getReverse() function
+	//LinkedList *reversed = list.getReverse();
+	//ASSERT_NOT_NULL(reversed);
+	//ASSERT_EQUAL("3 2 1", reversed->toString());
+	//ASSERT_EQUAL(3, reversed->size());
 
-	// Delete an element from the list
-	list.erase(2);
-	ASSERT_EQUAL("1 3", list.toString());
-	ASSERT_EQUAL(2, list.size());
+	//// Delete an element from the list
+	//list.erase(2);
+	//ASSERT_EQUAL("1 3", list.toString());
+	//ASSERT_EQUAL(2, list.size());
 
-	// Try deleting an element that isn't present in the list
-	list.erase(42);
-	ASSERT_EQUAL("1 3", list.toString());
+	//// Try deleting an element that isn't present in the list
+	//list.erase(42);
+	//ASSERT_EQUAL("1 3", list.toString());
 
-	// Do some insertions
-	ASSERT_EQUAL(true, list.insert(0, 0));
-	ASSERT_EQUAL("0 1 3", list.toString());
-	ASSERT_EQUAL(3, list.size());
+	//// Do some insertions
+	//ASSERT_EQUAL(true, list.insert(0, 0));
+	//ASSERT_EQUAL("0 1 3", list.toString());
+	//ASSERT_EQUAL(3, list.size());
 
-	ASSERT_EQUAL(true, list.insert(0, 2));
-	ASSERT_EQUAL("0 1 0 3", list.toString());
-	ASSERT_EQUAL(4, list.size());
+	//ASSERT_EQUAL(true, list.insert(0, 2));
+	//ASSERT_EQUAL("0 1 0 3", list.toString());
+	//ASSERT_EQUAL(4, list.size());
 
-	// And now some deletions
-	list.erase(0);
-	ASSERT_EQUAL("1 3", list.toString());
-	ASSERT_EQUAL(2, list.size());
+	//// And now some deletions
+	//list.erase(0);
+	//ASSERT_EQUAL("1 3", list.toString());
+	//ASSERT_EQUAL(2, list.size());
 
-	list.erase(1);
-	ASSERT_EQUAL("3", list.toString());
-	ASSERT_EQUAL(1, list.size());
+	//list.erase(1);
+	//ASSERT_EQUAL("3", list.toString());
+	//ASSERT_EQUAL(1, list.size());
 
-	list.erase(3);
-	ASSERT_EQUAL("", list.toString());
-	ASSERT_EQUAL(0, list.size());
+	//list.erase(3);
+	//ASSERT_EQUAL("", list.toString());
+	//ASSERT_EQUAL(0, list.size());
 
-	// Make sure that "reversed" wasn't affected by the changes that were
-	// made to "list"
-	ASSERT_EQUAL("3 2 1", reversed->toString());
+	//// Make sure that "reversed" wasn't affected by the changes that were
+	//// made to "list"
+	//ASSERT_EQUAL("3 2 1", reversed->toString());
 
-	// Make sure that "list2" wasn't affected by the changes that were
-	// made to "list"
-	ASSERT_EQUAL("1 2 3", list2.toString());
-	ASSERT_EQUAL(3, list2.size());
+	//// Make sure that "list2" wasn't affected by the changes that were
+	//// made to "list"
+	//ASSERT_EQUAL("1 2 3", list2.toString());
+	//ASSERT_EQUAL(3, list2.size());
 
-	// Since list is a pointer, it will eating up memory until we manually
-	// delete it. We don't use "reversed" after this point in the program,
-	// so we need to tell the heap manager that we're done with it.
-	delete reversed;
+	//// Since list is a pointer, it will eating up memory until we manually
+	//// delete it. We don't use "reversed" after this point in the program,
+	//// so we need to tell the heap manager that we're done with it.
+	//delete reversed;
 }
 
-void testdll() {
-	// create a new empty list
-	dlinkedlist list;
-	assert_equal("", list.tostring());
-
-	// add some new elements to the list
-	assert_equal(true, list.insert(1, 0));
-	assert_equal(true, list.insert(2, 1));
-	assert_equal(true, list.insert(3, 2));
-
-	assert_equal("1 2 3", list.tostring());
-	assert_equal(3, list.size());
-
-	// test out the copy constructor
-	dlinkedlist list2(list);
-	assert_equal("1 2 3", list2.tostring());
-	assert_equal(3, list2.size());
-
-	// test out the list.getreverse() function
-	dlinkedlist *reversed = list.getreverse();
-	assert_not_null(reversed);
-	assert_equal("3 2 1", reversed->tostring());
-	assert_equal(3, reversed->size());
-
-	// delete an element from the list
-	list.erase(2);
-	assert_equal("1 3", list.tostring());
-	assert_equal(2, list.size());
-
-	// try deleting an element that isn't present in the list
-	list.erase(42);
-	assert_equal("1 3", list.tostring());
-
-	// do some insertions
-	assert_equal(true, list.insert(0, 0));
-	assert_equal("0 1 3", list.tostring());
-	assert_equal(3, list.size());
-
-	assert_equal(true, list.insert(0, 2));
-	assert_equal("0 1 0 3", list.tostring());
-	assert_equal(4, list.size());
-
-	// and now some deletions
-	list.erase(0);
-	assert_equal("1 3", list.tostring());
-	assert_equal(2, list.size());
-
-	list.erase(1);
-	assert_equal("3", list.tostring());
-	assert_equal(1, list.size());
-
-	list.erase(3);
-	assert_equal("", list.tostring());
-	assert_equal(0, list.size());
-
-	// make sure that "reversed" wasn't affected by the changes that were
-	// made to "list"
-	assert_equal("3 2 1", reversed->tostring());
-
-	// make sure that "list2" wasn't affected by the changes that were
-	// made to "list"
-	assert_equal("1 2 3", list2.tostring());
-	assert_equal(3, list2.size());
-
-	// since list is a pointer, it will eating up memory until we manually
-	// delete it. we don't use "reversed" after this point in the program,
-	// so we need to tell the heap manager that we're done with it.
-	delete reversed;
-}
+//void testdll() {
+//	// create a new empty list
+//	dlinkedlist list;
+//	assert_equal("", list.tostring());
+//
+//	// add some new elements to the list
+//	assert_equal(true, list.insert(1, 0));
+//	assert_equal(true, list.insert(2, 1));
+//	assert_equal(true, list.insert(3, 2));
+//
+//	assert_equal("1 2 3", list.tostring());
+//	assert_equal(3, list.size());
+//
+//	// test out the copy constructor
+//	dlinkedlist list2(list);
+//	assert_equal("1 2 3", list2.tostring());
+//	assert_equal(3, list2.size());
+//
+//	// test out the list.getreverse() function
+//	dlinkedlist *reversed = list.getreverse();
+//	assert_not_null(reversed);
+//	assert_equal("3 2 1", reversed->tostring());
+//	assert_equal(3, reversed->size());
+//
+//	// delete an element from the list
+//	list.erase(2);
+//	assert_equal("1 3", list.tostring());
+//	assert_equal(2, list.size());
+//
+//	// try deleting an element that isn't present in the list
+//	list.erase(42);
+//	assert_equal("1 3", list.tostring());
+//
+//	// do some insertions
+//	assert_equal(true, list.insert(0, 0));
+//	assert_equal("0 1 3", list.tostring());
+//	assert_equal(3, list.size());
+//
+//	assert_equal(true, list.insert(0, 2));
+//	assert_equal("0 1 0 3", list.tostring());
+//	assert_equal(4, list.size());
+//
+//	// and now some deletions
+//	list.erase(0);
+//	assert_equal("1 3", list.tostring());
+//	assert_equal(2, list.size());
+//
+//	list.erase(1);
+//	assert_equal("3", list.tostring());
+//	assert_equal(1, list.size());
+//
+//	list.erase(3);
+//	assert_equal("", list.tostring());
+//	assert_equal(0, list.size());
+//
+//	// make sure that "reversed" wasn't affected by the changes that were
+//	// made to "list"
+//	assert_equal("3 2 1", reversed->tostring());
+//
+//	// make sure that "list2" wasn't affected by the changes that were
+//	// made to "list"
+//	assert_equal("1 2 3", list2.tostring());
+//	assert_equal(3, list2.size());
+//
+//	// since list is a pointer, it will eating up memory until we manually
+//	// delete it. we don't use "reversed" after this point in the program,
+//	// so we need to tell the heap manager that we're done with it.
+//	delete reversed;
+//}
