@@ -15,7 +15,6 @@ using namespace std;
 		cerr << "Expected value \"" << EXPECTED << "\" does not match "; \
 		cerr << "actual value \"" << ACTUAL << "\"" << endl; \
 	}
-
 // This macro does nothing if ACTUAL != NULL. However, if ACTUAL == NULL
 // then it prints an error message.
 #define ASSERT_NOT_NULL(ACTUAL) \
