@@ -80,6 +80,11 @@ public:
 	// Sort the elements in the list in ascending order
 	void sort();
 
+	// Sets the size of the list
+	void setSize(unsigned int size) {
+		_size = size;
+	}
+
 private:
 	Node *_first; // A pointer to the first node in the list
 	unsigned int _size; // The number of elements that are present in the list
