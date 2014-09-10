@@ -55,30 +55,17 @@ std::string LinkedList::toString() const {
 }
 
 LinkedList* LinkedList::getReverse() const {
-	LinkedList revList(*this);
-	Node* traverser = revList._first;
-	int currentSize = revList.size();
-	Node* nodeArray[currentSize];
-	// create an array with references to the nodes in the list
-	for(int i = 0; i < currentSize; i++) {
-		nodeArray[i] = traverser;
-		if(i < currentSize - 1) { 
+	LinkedList* revList = new LinkedList();
+	Node* traverser = _first;
+	int currentsize = _size;
+	// fill the new linked list with references to the nodes in the list
+	for(int i = 0; i < currentsize; i++) {
+		revList->insert(traverser->getValue(), 0);
+		if(i < currentsize - 1) { 
 			traverser = traverser->getNext();
 		} // end if
 	} // end for 
-	// go through the array in reverse to create a new reversed list
-	if(currentSize >= 1) {
-		revList._first = nodeArray[currentSize - 1];
-		for(int i = currentSize - 1; i >= 0; i--) {
-			if(i > 0) {
-				nodeArray[i]->setNext(nodeArray[i - 1]);
-			} else {
-				nodeArray[i]->setNext(NULL);
-			} // end else
-		} // end for
-	} // end if
-	delete[] nodeArray;
-	return &revList;
+	return revList;
 }
 
 bool LinkedList::insert(int value, int offset) {
@@ -86,7 +73,8 @@ bool LinkedList::insert(int value, int offset) {
 	Node* traverser = _first;
 	if (offset == 0) {
 		toBeInserted->setNext(traverser);
-		setSize(2);
+		setFirst(toBeInserted);
+		setSize(size() + 1);
 		return true;
 	} else if (offset <= size() && offset > 0) {
 		// loop to one before offset
@@ -98,10 +86,11 @@ bool LinkedList::insert(int value, int offset) {
 			toBeInserted->setNext(traverser->getNext());
 		}
 		traverser->setNext(toBeInserted);
-		setSize(2);
+		setSize(size() + 1);
 		return true;
 	} else {
 		// invalid offset
+		delete toBeInserted;
 		return false;
 	} // end else
 }
@@ -156,45 +145,28 @@ int LinkedList::size() const {
 	return _size;
 }
 
+
 void LinkedList::sort() {
-	Node* traverser = _first;
-	int currentSize = this->size();
-	Node* nodeArray[currentSize];
-	// create an array with references to the nodes in the list
-	for(int i = 0; i < currentSize; i++) {
-		nodeArray[i] = traverser;
-		if(i < currentSize - 1) { 
-			traverser = traverser->getNext();
-		} // end if
-	} // end for
-	// O(n^2) sort
-	for(int i = 0; i < currentSize; i++) {
-		Node* lowest = nodeArray[i];
-		int lowestIndex = i;
-		// find the lowest each time
+	Node* outerTraverser = _first;
+	int currentSize = size();
+	if (currentSize <= 1) {
+		return;
+	}
+	//for each node, iterate through the rest of the list and find the lowest value
+	for (int i = 0; i < currentSize; i++) {
+		Node* innerTraverser = outerTraverser;
+		Node* lowestNode = outerTraverser;
+		//iterates through the rest of list to get lowest value node
 		for (int j = i; j < currentSize; j++) {
-			if(lowest->getValue() > nodeArray[j]->getValue()) {
-				lowest = nodeArray[j];
-				lowestIndex = j;
+			if (innerTraverser->getValue() < lowestNode->getValue()) {
+				lowestNode = innerTraverser;
 			} // end if
+			innerTraverser = innerTraverser->getNext();
 		} // end for
-		// swap the lowest and the current one
-		Node* temp = nodeArray[i];
-		nodeArray[i] = lowest;
-		nodeArray[lowestIndex] = temp;
+		//swap the two nodes values
+		int lowestNodeValue = lowestNode->getValue();
+		lowestNode->setValue(outerTraverser->getValue());
+		outerTraverser->setValue(lowestNodeValue);
+		outerTraverser = outerTraverser->getNext();
 	} // end for
-	// convert array back to LinkedList
-	Node* currentNode = _first;
-	for(int i = 0; i < currentSize; i++) {
-		currentNode = nodeArray[i];
-		if(i < currentSize - 1) { 
-			currentNode->setNext(nodeArray[i+1]);
-		} else {
-			currentNode->setNext(NULL);
-		} // end else
-	} // end for
-
-	delete[] nodeArray;
 }
-
-

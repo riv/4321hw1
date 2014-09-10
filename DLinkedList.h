@@ -2,8 +2,38 @@
 
 using namespace std;
 
-// TODO: Define any auxiliary data structures you need to define a doubly
-// linked list
+class DNode {
+public:
+	DNode(int value) {
+		_value = value;
+		_previous = NULL;
+		_next = NULL;
+	}
+	
+	int getValue() const {
+		return _value;
+	}
+	void setValue(int value) {
+		_value = value;
+	}
+	DNode* getPrevious() const {
+		return _previous;
+	}
+	void setPrevious(DNode* previous) {
+		_previous = previous;
+	}
+	DNode* getNext() const {
+		return _next;
+	}
+	void setNext(DNode* next) {
+		_next = next;
+	}
+
+private: 
+	int _value;
+	DNode *_previous;
+	DNode *_next;
+};
 
 // Implementation of a doubly linked list.
 class DLinkedList {
@@ -17,7 +47,7 @@ public:
 	// list should not affect the original list.
 	DLinkedList(const DLinkedList& original);
 
-	// List destructor. Free the memory that's used by nodes in the list.
+	// List destructor. Free the memory that's used by DNodes in the list.
 	~DLinkedList();
 
 	// Generate a string containing human-readable versions ofthe elements of
@@ -32,10 +62,10 @@ public:
 	// will return a new list which contains the elements [3, 2, 1].
 	DLinkedList* getReverse() const;
 
-	// Insert a new node into the list. That node should have the value "value"
+	// Insert a new DNode into the list. That DNode should have the value "value"
 	// and should be located at position "offset". For instance, if offset = 0
-	// then the node should be inserted into the list at the very beginning
-	// of the list. If offset = 1 then the node should be inserted just after
+	// then the DNode should be inserted into the list at the very beginning
+	// of the list. If offset = 1 then the DNode should be inserted just after
 	// what was previously the first element of the list. And so on.
 	//
 	// This function should return true if the insertion was successful, or
@@ -43,8 +73,8 @@ public:
 	// length of the list.)
 	bool insert(int value, int offset);
 
-	// Remove from the list every node whose value is equal to "value". If no
-	// such nodes exist, the contents of the list will not be changed by this
+	// Remove from the list every DNode whose value is equal to "value". If no
+	// such DNodes exist, the contents of the list will not be changed by this
 	// function.
 	bool erase(int value);
 
@@ -54,6 +84,17 @@ public:
 	// Sort the elements in the list in ascending order
 	void sort();
 
+	//Sets the _first DNode of the list
+	void setFirst(DNode* first) {
+		_first = first;
+	}
+
+	//Sets the size of the list
+	void setSize(unsigned int size) {
+		_size = size;
+	}
+
 private:
-	
+	DNode *_first;
+	unsigned int _size;
 };

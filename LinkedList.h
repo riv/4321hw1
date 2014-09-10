@@ -85,6 +85,16 @@ public:
 		_size = size;
 	}
 
+	// Sets the _first node of the LinkedList
+	void setFirst(Node* first) {
+		_first = first;
+	}
+
+	// Gets the _first node of the LinkedList
+	Node* getFirst() {
+		return _first;
+	}
+
 private:
 	Node *_first; // A pointer to the first node in the list
 	unsigned int _size; // The number of elements that are present in the list
