@@ -1,9 +1,10 @@
-﻿Build started 9/10/2014 7:18:02 PM.
+﻿Build started 9/10/2014 7:35:15 PM.
 Project "C:\Users\shuo\Desktop\4321hw1\4321hw1.vcxproj" on node 2 (build target(s)).
 InitializeBuildStatus:
   Creating "Debug\4321hw1.unsuccessfulbuild" because "AlwaysCreate" was specified.
 ClCompile:
-  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt DLinkedList.cpp LinkedList.cpp
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt DLinkedList.cpp LinkedList.cpp main.cpp
+  main.cpp
   LinkedList.cpp
 LinkedList.cpp(19): warning C4018: '<' : signed/unsigned mismatch
   DLinkedList.cpp
@@ -24,4 +25,4 @@ Done Building Project "C:\Users\shuo\Desktop\4321hw1\4321hw1.vcxproj" (build tar
 
 Build succeeded.
 
-Time Elapsed 00:00:00.95
+Time Elapsed 00:00:01.77

@@ -24,19 +24,21 @@ using namespace std;
 	}
 
 void TestLL();
-//void TestDLL();
+void TestDLL();
 
 int main(int argc, const char **argv)
 {
 	cerr << "Testing LinkedList implementation..." << endl;
 	TestLL();
 
-	//cerr << "Testing DLinkedList implementation..." << endl;
-	//TestDLL();
+	cerr << "Testing DLinkedList implementation..." << endl;
+	TestDLL();
 
 	cerr << "Passed all tests. Everything looks good to me!" << endl;
 
 	cin.get();
+
+	_CrtDumpMemoryLeaks();
 }
 
 void TestLL() {
@@ -111,12 +113,11 @@ void TestLL() {
 
 	 //Since list is a pointer, it will eating up memory until we manually
 	 //delete it. We don't use "reversed" after this point in the program,
-	 //so we need to tell the heap manager that we're done with it.
+	 //so we need to tell the heap manager that we're done with it
 	delete reversed;
-	_CrtDumpMemoryLeaks();
 }
 
-void testdll() {
+void TestDLL() {
 	// create a new empty list
 	DLinkedList list;
 	ASSERT_EQUAL("", list.toString());
@@ -184,5 +185,4 @@ void testdll() {
 	// delete it. we don't use "reversed" after this point in the program,
 	// so we need to tell the heap manager that we're done with it.
 	delete reversed;
-	_CrtDumpMemoryLeaks();
 }
